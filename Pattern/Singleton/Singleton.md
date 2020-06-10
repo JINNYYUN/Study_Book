@@ -11,8 +11,7 @@
 
 
 ### 구조
-
-![SingletonPattern](Singleton_Diagram.jpg)
+<img src="Singleton_Diagram.jpg" alt="SingletonPattern" width="30%" height="30%"/>
 
 - SingletonClass의 객체인 instance를 static 변수로 지정한다 > 메모리 할당된 instance를 초기화 하지 않고 계속해서 리턴하기 위함.
 - 생성자에 private접근 제어자를 지정함으로써 외부 클래스에서 new를 실행할 수 없도록 한다.
