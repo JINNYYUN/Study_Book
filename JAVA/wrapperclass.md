@@ -27,18 +27,9 @@ System.out.println(b);
 
 </br>
 
-### 생성방법
-
-```java
-Double dou = 235.789;
-Double dou1 = new Double("345.678"); 
-//두 개 모두 동일한 문법
-//wrapperclass는 자동으로 잡아줌, wrapper클래스의 특징
-```
 
 Wrapper클래스의 부모인 **Number클래스**는 객체가 가지고 있는 값을 숫자와 관련된 기본형으로 변환하여 반환하는 메서드들을 정의하고 있다. 즉 Wrapper클래스는 데이터 타입간의 변환 기능을 가지고 있다.
 
-</br>
 
 ### 문자열 → 숫자
 
