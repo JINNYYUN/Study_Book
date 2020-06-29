@@ -1,3 +1,4 @@
+package LinkedList;
 /*SingleLinkedLink - 단방향 연결*/
 
 /*하나의 리스트를 구현하기 위한 클래스*/
