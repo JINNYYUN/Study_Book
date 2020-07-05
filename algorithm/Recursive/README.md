@@ -277,3 +277,45 @@ public class Maze {
 	}	
 }
 ```
+
+</br>
+
+### **Blob셀 개수 세기 알고리즘**
+특정 데이터를 기준으로 대각선이나 상하좌우에 있는 데이터를 묶어서 Blob라고 부른다. 특정데이터가 속해있는 Blob의 셀의 개수를 구하여라.
+
+
+```java
+public class Blob {
+	private static int[][] blob= {
+			{1,1,0,0,0,0,0,1},
+			{0,1,1,0,0,0,0,0},
+			{0,0,1,1,0,0,1,0},
+			{0,0,0,1,0,1,0,1},
+			{0,0,1,0,0,0,1,0},
+			{0,0,0,0,0,0,1,0},
+			{0,0,1,0,0,0,0,1},
+			{1,1,0,0,0,0,1,0},
+		};
+	private static int BACK_GROUND = 0;
+	private static int IMAGE_COLOR = 1;
+	private static int ALREADY_COUNTED = 2;
+	
+	public static void main(String[] args) {
+		System.out.println(countCells(1,1));
+		
+	}
+	
+	public static int countCells(int x, int y) {
+		if(x<0||y<0||x>blob.length-1||y>blob.length-1) {
+			return 0;
+		}else if(blob[x][y] != 1) {
+			return 0;
+		}else {
+			blob[x][y] = 2;
+			return 1 + countCells(x,y-1) + countCells(x+1,y-1) + countCells(x+1,y) + countCells(x+1,y+1) + 
+					countCells(x,y+1) + countCells(x-1,y+1) + countCells(x-1,y) + countCells(x-1,y-1);
+		}
+	}
+}
+```
+
