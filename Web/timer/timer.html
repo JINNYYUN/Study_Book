@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form action ="" name ="frm">
+	<div align="center">
+	<strong>timer</strong>
+	<br><br>
+	
+	<select id = "selid" name = "myChoice">
+		<option value = "180">원하는 시간을 선택해주세요(기본 시간 3분)</option>
+		<option value = "300">5분 </option>
+		<option value = "180">3분 </option>
+		<option value = "150">2분 30초 </option>
+		<option value = "120">2분 </option>
+		<option value = "60">1분 </option>
+		<option value = "30">30초 </option>
+	</select>
+	
+	<input type = "button" value ="Start" onclick = "noodle()">
+	<br><br>
+	
+	<span id="countdown">시간을 선택해주세요!</span>
+	<br><br>
+	
+	<button type="button" onclick="window.close()">close</button>
+	</div>
+</form>
+	
+<script>
+let count = 0;
+let time = 0;
+let choice = 0;
+
+function noodle(){
+	clearInterval(time);	//timer initialize
+	
+	/*시간 선택 취득 방법 1 
+	let value = document.getElementById('selid').value;
+	count = value;
+	*/
+	
+	//시간 선택 취득 방법 2 -> selectedIndex사용 
+	choice = document.frm.myChoice.selectedIndex; //0~n-1
+	count = parseInt(document.frm.myChoice.options[choice].value);
+	
+	time = setInterval('myTimer()',1000);
+}
+
+function myTimer(){
+	count = count - 1;
+	
+	document.getElementById('countdown').innerHTML = "완료까지 <b>" + count + "초 남았습니다.";
+	
+	if(count == 0){
+		clearInterval(time);
+		alert('시간이 완료되었습니다');
+	}
+}
+</script>
+</body>
+</html>
