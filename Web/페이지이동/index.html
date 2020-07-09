@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body >
+<!-- a태그 -->
+<a href="NewFile.jsp?name=홍길동&age=24">NewFile.jsp로 이동</a>
+
+<!-- form -->
+<form action="NewFile.jsp">
+이름 : <input type="text" name="name">
+<br>
+나이 : <input type="text" name="age">
+<br>
+<input type ="submit" value="이동">
+</form>
+
+<!--javaScript-->
+이름 : <input type="text" name="name">
+<br>
+나이 : <input type="text" name="age">
+<br>
+<button type= "button" onclick = "btnclick()">이동</button>
+
+<script type = "text/javascript">
+function btnclick(){
+	let name = document.getElementById('name').value;
+	let age = document.getElementBtId('age').value;
+	
+	location.href = "NewFile.jsp?name="+name+"&age"+age;
+}
+</script>
+
+</body>
+</html>

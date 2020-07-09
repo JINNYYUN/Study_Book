@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<h2>여기는 View2입니다</h2>
+
+<input type ="button" value="이전으로 " onclick="history.back()">
+
+<input type="button" value="현재페이지 갱신" onclick="location.reload()">
+
+<input type="button" value="진행" onclick="history.forward()">
+
+<button type="button" onclick="gopage()">View3로 이동</button>
+
+<script>
+function gopage(){
+	location.href="view3.html"
+}
+</script>
+
+</body>
+</html>
