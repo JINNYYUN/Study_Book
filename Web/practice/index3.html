@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div align = "center">
+<h1>체육관 이용 요금</h1>
+
+<div align = "left" style = "width: 300px;">
+<span>기본 사용료(4시간)40,800원</span>
+<br><br>
+
+<form name="frm">
+	<input type="checkbox" onclick="sum(0)" id="ch1" value="20000">야간조명(20,000원)
+	<br>
+	<input type="checkbox" onclick="sum(1)" id="ch2" value="4000">배구 네트 x 2장(4,000원)
+	<br>
+	<input type="checkbox" onclick="sum(2)" id="ch3" value="5000">배구공 x 10(20,000원)
+	<br>
+	<br>
+	<sapn>합계금액: </sapn><input type="text" id="t1" value="40800"><sapn>원</sapn>
+</form>
+<script type="text/javascript">
+let total = parseInt( document.getElementById('t1').value ); // 40800
+
+let arr = new Array(3);
+for(i = 0;i < arr.length; i++){
+	arr[i] = parseInt( document.getElementById('ch' + (i + 1)).value );
+}
+
+function sum( num ) {
+
+	if( document.frm.elements[num].checked == true ){
+		total = total + arr[num];
+	}else{
+		total = total - arr[num];
+	}
+	
+	document.frm.elements[3].value = total;
+	
+	
+	let obj = document.getElementsByTagName("body")[0];
+	//alert( obj.getElementsByTagName("h1")[0].innerHTML);
+}
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

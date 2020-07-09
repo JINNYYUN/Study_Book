@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div align = "center">
+<h3>한국에서 제일 높은 산은?</h3>
+<span>답을 입력해주세요: </span>
+<input type="text" id="answer">
+
+<br><br><br>
+<input type="button" onclick="func()" value="정답확인하기">
+</div>
+<script type="text/javascript">
+function func() {
+	
+	var answer = document.getElementById('answer').value;
+	if(answer == ''){
+		alert('정답을 기입해 주십시오');
+	}else if(answer == '한라산'){
+		alert('정답입니다');
+	}else{
+		alert('정답이 아닙니다');
+	}	
+}
+
+</script>
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+

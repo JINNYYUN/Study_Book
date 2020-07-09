@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div align = "center">
+<h1>변수의 연산</h1>
+<p>a, b에 대해서 변수 a와 b의 계산 결과를 표시합니다.<p>
+
+
+<sapn>a를 입력해주세요 : </sapn><input type="text" id="a" size="10"> <br>
+<sapn>b를 입력해주세요 : </sapn><input type="text" id="b" size="10">
+<br><br>
+
+<button type="button" onclick="plus()">덧셈</button>
+<button type="button" onclick="minus()">뺄셈</button>
+<button type="button" onclick="multi()">곱셈</button>
+<button type="button" onclick="div()">나눗셈</button>
+<button type="button" onclick="rest()">나머지</button>
+<br><br>
+
+
+<!--<input type="text" id="oper" size="5">  -->
+
+<p id = "name">결과</p>
+<input type="text" id="result">
+</div>
+
+<script type="text/javascript">
+let a, b;
+
+function getValue() {
+	a = parseInt(document.getElementById("a").value);
+	b = parseInt(document.getElementById("b").value);
+}
+
+function plus() {
+	getValue();
+	let str = a + '+' + b + '='
+	let result = a+b
+	document.getElementById('result').value = str + result;
+	document.getElementById("name").innerHTML = "덧셈의 결과 "
+}
+function minus() {
+	getValue();
+	let str = a + '-' + b + '='
+	let result = a-b
+	document.getElementById('result').value = str + result;
+	document.getElementById("name").innerHTML = "뺄셈의 결과 "
+}
+function multi() {
+	getValue();
+	let str = a + '*' + b + '='
+	let result = a*b
+	document.getElementById('result').value = str + result;
+	document.getElementById("name").innerHTML = "곱셈의 결과 "
+}
+function div() {
+	getValue();
+	if(b == 0){
+		alert('계산할 수 없습니다');
+		return;
+	}
+	
+	let str = a + '/' + b + '='
+	let result = a/b
+	document.getElementById('result').value = str + result;
+	document.getElementById("name").innerHTML = "나눗셈의 결과 "
+}
+function rest() {
+	getValue();
+	if(b == 0){
+		alert('계산할 수 없습니다');
+		return;
+	}
+	
+	let str = a + '%' + b + '='
+	let result = a%b
+	document.getElementById('result').value = str + result;
+	document.getElementById("name").innerHTML = "나머지는 "
+}
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
