@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<style>
+.button {
+  background-color: #f44336; /* Red */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button2 {background-color: #4CAF50;} /* Green */
+.button3 {background-color: #3366FF;} /* Blue */ 
+.button4 {background-color: #555555;} /* Black */ 
+.button5 {background-color: White; color:black; border: 2px solid #555555;} /* White */
+
+</style>
+
+<body>
+<div align = "center">
+<P>버튼을 클릭해 배경색을 바꿔보아요!</P>
+<br>
+<button type = "button" class="button" onclick = "btnclick(0)">빨강</button>
+<button type = "button" class="button button2" onclick = "btnclick(1)">녹색</button>
+<button type = "button" class="button button3" onclick = "btnclick(2)">파랑</button>
+<button type = "button" class="button button4" onclick = "btnclick(3)">검정색</button>
+<button type = "button" class="button button5" onclick = "btnclick(4)">흰색</button>
+</div>
+
+<script type = "text/javascript">
+function btnclick(num){
+	if(num==0){
+		document.bgColor = "#f44336";
+	}
+	if(num==1){
+		document.bgColor = "#4CAF50";
+	}
+	if(num==2){
+		document.bgColor = "#3366FF";
+	}
+	if(num==3){
+		document.bgColor = "#555555";
+	}
+	if(num==4){
+		document.bgColor = "White";
+	}
+}
+</script>
+
+</body>
+</html>

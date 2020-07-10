@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>2개의 주사위</title>
+</head>
+<body>
+<div align = "center">
+	<h1>2개의 주사위</h1>
+	<p>버튼을 클릭하면 2개의 주사위가 랜덤됩니다.</p>
+	<br><br>
+	
+	<img alt="" src="./images/sai_1.gif" id="d1">
+	<img alt="" src="./images/sai_1.gif" id="d2">
+	<br>
+	<p id="dic1">주사위의 합은?</p>
+	<button type="button" onclick="dice()" style = "padding:20px;">주사위 던지기</button>
+</div>
+
+<script type="text/javascript">
+function dice(){
+	let r1 = Math.random()*6;
+	let r2 = Math.random()*6;
+	
+	r1 = Math.ceil(r1);
+	r2 = Math.ceil(r2);
+	
+//	document.getElementById("d1").src ='./images/sai_'+ r1+'.gif';
+//	document.getElementById("d2").src ='./images/sai_'+ r2+'.gif';
+	
+	document.images[0].src = './images/sai_' + r1 + '.gif';
+	document.images[1].src = './images/sai_' + r2 + '.gif';
+
+	document.getElementById("dic1").innerHTML = r1 + r2;
+}
+</script>
+
+</body>
+</html>

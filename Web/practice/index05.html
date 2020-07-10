@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div align = "center">
+	<h1>문제</h1>
+	<p>영어 속담으로<br> "1일 1개씩 먹으면 의사는 필요없다" <br>라고 하는 <b>과일</b>은 무엇일까요?<p>
+	<br><br>
+
+	<div style="width: 280px; height: 80px;" align = "left">
+		<form action="" name="frm">
+		<input type="checkbox" id="_eng" name="eng" >영어로 입력하기<br><br>
+		<span>답: </span><input type="text" id="_answer" name="answer" size="20">
+		<button type="button" onclick="check()">확인하기</button> 
+		</form>
+	</div>
+</div>
+<script>
+function check() {
+	let checkbox = document.forms[0].elements[0].checked;
+//	alert(checkbox);
+	let answer = document.forms[0].elements[1].value;
+//	alert(answer);
+
+	//영어를 선택하면
+	if(checkbox == true){
+		if(answer == "apple" || answer == "APPLE" || answer == 'Apple'){
+			alert('정답입니다');			
+		}else{
+			alert('오답입니다');
+		}				
+	}else{
+		if(answer == '사과' || answer == '능금'){
+			alert('정답입니다');	
+		}else{
+			alert('오답입니다');
+		}
+	}	
+}
+</script>
+</body>
+</html>

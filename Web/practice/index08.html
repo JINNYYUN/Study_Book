@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div align="center">
+<h1>환영합니다</h1>
+
+<span>현재 시각은</span>
+<h3 id="timebox"></h3>
+<span>입니다.</span>
+</div>
+
+<script type="text/javascript">
+
+function nowTime() {
+	let now = new Date();
+	
+	let hour = now.getHours();
+	let minute = now.getMinutes();
+	let second = now.getSeconds();
+	
+	// 1 			1:1:20	-> 01:01:20
+	if(hour < 10){
+		hour = "0" + hour;
+	}
+	if(minute < 10){
+		minute = "0" + minute;
+	}
+	if(second < 10){
+		second = "0" + second;
+	}
+	
+	document.getElementById('timebox').innerHTML = hour + ":" + minute + ":" + second; 	
+}
+
+setInterval("nowTime()", 100);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div align="center">
+	<h1>미술관 및 박물관 링크</h1>
+	<p>해당 페이지로 바로 이동합니다</p>
+	<form action="" name="formname">
+		<select id = "links" onchange ="golink()">
+			<option>선택해주세요</option>
+			<option>미술관--------</option>
+			<option value="http://sema.seoul.go.kr">서울 시립 미술관</option>
+			<option value="http://www.mmca.go.kr">국립 현대 미술관</option>
+			<option value="http://www.sac.or.kr">예술의 전당</option>
+			<option>박물관--------</option>
+			<option value="http://www.museum.go.kr">국립 중앙 박물관</option>
+			<option value="http://www.museum.seoul.kr">서울 역사 박물관</option>
+			<option value="http://www.nfm.go.kr">국립 민속 박물관</option>
+		</select>
+	</form>
+</div>
+<script type="text/javascript">
+function golink(){
+	/* 첫번째 방법
+	let selIndex = document.getElementById('link').selectedIndex;
+	alert(selIndex); //확인용
+	
+	let url = document.formname.links.option[selIndex].value;
+	alert(url);	//확인용
+	*/
+	
+	let selIndex = document.formname.links.selectedIndex;
+	//alert(selIndex);
+	
+	let url = document.getElementById("links").options[selIndex].value;
+	//alert(url)
+	
+	if(selIndex!=0 && selIndex!=1 && selIndex !=5 ){
+		location.href = url;
+	}
+}
+
+</script>
+</body>
+</html>
