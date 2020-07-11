@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 10px;
+  text-align: center;
+}
+</style>
+
+</head>
+<body>
+<div align = "center">
+<table>
+	<tr>
+		<th style="background-color: #ffae00; padding 10px">네이버</th>
+		<td id = "naver">http://www.naver.com</td>
+		<td>
+			<button type ="button" onclick = "func('naver')">열기</button>
+		</td>
+	</tr>
+	<tr>
+		<th style="background-color: #00ff00; padding 10px">구글</th>
+		<td id = "google">http://www.google.com</td>
+		<td>
+			<button type ="button" onclick = "func('google')">열기</button>
+		</td>
+	</tr>
+</table>
+</div>
+<script type="text/javascript">
+function func(name){
+	if(name=='naver'){
+		let url = document.getElementById("naver").innerHTML;
+		location.href = url;
+	}else if(name=='google'){
+		let url = document.getElementById("google").innerHTML;
+		location.href = url;
+	}
+}
+</script>
+</body>
+</html>

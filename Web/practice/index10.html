@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>생일 디데이 구하기</title>
+</head>
+<body>
+
+<div align = "center">
+<h2>다음 생일까지 남은 일수 구하기</h2>
+
+<button type="button" onclick="nextBD()" style = "padding:20px;" >생일 입력하기</button>
+
+<br>
+<p id ="result">버튼을 클릭한 뒤 생일을 입력하면, <br>
+다음 생일까지 남은 일수를 볼 수 있습니다.</p>
+</div>
+
+<script type="text/javascript">
+function nextBD(){
+	//현재 월과 일 가져오기
+	var now = new Date();
+	var nowMonth = now.getMonth()+1;
+	var nowDay = now.getDate();
+	
+	//생일 입력받기
+	var inputString = prompt('생일을 입력해주세요(월과 일만 입력)', '0710');
+	//alert(inputString);
+	
+	if(inputString.length != 4){
+		alert("잘못 입력 하셨습니다.");
+	}
+	else{
+		//생일의 월과 일 가져오기
+		var birthday = inputString+"";
+		var bdMonth =  birthday.substr(0,2);
+		var bdDay =  birthday.substr(2,4);
+		console.log(bdMonth, bdDay);
+		
+		//생일이 이미 지났으면
+		if(nowMonth>bdMonth || (nowMonth==bdMonth && bdDay<nowDay)){
+			var nextBirth = new Date(now.getFullYear()+1, bdMonth-1, bdDay);
+			var dDay = Math.ceil((nextBirth.getTime() - now.getTime()) /1000/60/60/24);
+			
+			document.getElementById("result").innerHTML = "생일까지 '" + dDay +"일' 남았습니다.";
+		}
+		//생일이 지나지 않았으면
+		else if(nowMonth<bdMonth || (nowMonth==bdMonth && bdDay>nowDay)){
+			var nextBirth = new Date(now.getFullYear(), bdMonth-1, bdDay);
+			var dDay = Math.ceil((nextBirth.getTime() - now.getTime()) /1000/60/60/24);
+			
+			document.getElementById("result").innerHTML = "생일까지 '" + dDay +"일' 남았습니다.";
+		}
+		else if(nowMonth==bdMonth && bdDay==nowDay){
+			document.getElementById("result").innerHTML = "생일 축하합니다!";
+		}
+		/*
+		else if(nowMonth==bdMonth){
+			if(bdDay<)
+			
+			var nextBirth = new Date(now.getFullYear(), bdMonth-1, bdDay);
+			var dDay = Math.ceil((nextBirth.getTime() - now.getTime()) /1000/60/60/24);
+			document.getElementById("result").innerHTML = "생일까지 '" + dDay +"일' 남았습니다."
+		}
+		*/
+		
+		//var gap = now.getTime()
+	}
+}
+</script>
+</body>
+</html>

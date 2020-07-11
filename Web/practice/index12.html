@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div align = "center">
+	<h3>문제</h3>
+	<p>다음 이차 방정식의 해를 구하고, 정답을 선택하세요</p>
+	<p style="font-size: xx-Large; margin-lefr:30px">x<sup>2</sup>-5x=-6</p>
+
+<br>
+<button type="button" onclick="result(1)">x=1</button>
+<button type="button" onclick="result(2)">x=2</button>
+<button type="button" onclick="result(3)">x=3</button>
+<button type="button" onclick="result(4)">x=4</button>
+<button type="button" onclick="result(5)">x=5</button>
+
+<br>
+<p>정답은 2개입니다</p>
+
+</div>
+
+<script>
+function result(n){
+	let re = Math.pow(n,2)-(5*n);
+	if(re == -6){
+		alert("정답입니다.")
+	}else{
+		alert("정답이 아닙니다")
+	}
+}
+</script>
+
+</body>
+</html>
