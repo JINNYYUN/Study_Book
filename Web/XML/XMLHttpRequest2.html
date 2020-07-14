@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+
+<script type="text/javascript">
+let xHttp = new XMLHttpRequest();
+
+//readyState 어트리뷰트가 변경될때마다 호출되는 EventHandler
+xHttp.onreadystatechange = function (){
+	//서버상에 문서가 존재하고 요청한 데이터의 처리가 완료되어 응답할 준비가 완료되었을 때
+	if(this.readyState == 4 && this.status == 200){
+		nodeValFunc(this);
+		nodeNameFunc(this);
+		childNodeFunc(this);
+	}
+}
+//준비
+xHttp.open("GET", 'client.xml', true);
+xHttp.send();
+
+function nodeValFunc( xml ){
+	let num, name;
+	let txt, numtxt, xmlDoc;
+	
+	txt = numtxt = "";
+	
+	xmlDoc = xml.responseXML; //object로 넘어 옴. [object XMLDocument]
+	console.log(xmlDoc);
+	
+	num = xmlDoc.getElementsByTagName("번호");
+	name = xmlDoc.getElementsByTagName("이름");
+	console.log(num.length)
+	
+	for (i = 0;  i< num.length; i++) {
+		txt += num[i].childNodes[0].nodeValue+"<br>";
+		numtxt += name[i].childNodes[0].nodeValue +"<br>";
+	}
+	
+	document.getElementById("demo").innerHTML = txt+numtxt;
+}
+
+function nodeNameFunc(xml){
+	let arr, xmlDoc, txt; //pasing한 데이터
+	txt = "";
+	
+	xmlDoc = xml.responseXML;
+	
+	arr = xmlDoc.documentElement.childNodes;
+	
+	for (i = 0; i < arr.length; i++) {
+		if(arr[i].nodeType==1){
+			txt += arr[i].nodeName +"<br>";
+		}
+	}
+	
+	document.getElementById("demo1").innerHTML = txt;
+}
+
+function childNodeFunc(xml){
+	let arr, xmlDoc, txt;
+	txt = "";
+	
+	xmlDoc = xml.responseXML;
+	
+	arr = xmlDoc.getElementsByTagName("고객")[0];
+	let len = arr.childNodes.length;//길이
+	console.log(len);
+	
+	let fchild = arr.firstChild;
+	
+	for (var i = 0; i < len; i++) {
+		if(fchild.nodeType==1){
+			txt += i + " " + fchild.nodeName + "<br>";
+		}
+		fchild = fchild.nextSibling;
+	}
+	document.getElementById("demo2").innerHTML = txt;
+}
+</script>
+</body>
+</html>

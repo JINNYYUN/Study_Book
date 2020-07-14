@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+<p id="demo"></p>
+
+<script type="text/javascript">
+let xHttp = new XMLHttpRequest();
+
+xHttp.onreadystatechange = function(){
+	//서버상에 문서가 존재하고 요청한 데이터의 처리가 완료되어 응답할 준비가 완료되었을 때
+	if(this.readyState == 4 && this.status == 200){
+		nodeValueFunc(this);
+	}
+}
+
+xHttp.open("GET","http://openapi.seoul.go.kr:8088/sample/xml/SebcBusStopEng/1/5/", this);
+xHttp.send();
+
+function nodeValueFunc(xml){
+	//alert('nodeValueFunc');
+	
+	let arr, txt, xmlDoc;
+	txt = "";
+	
+	xmlDoc = xml.responseXML;
+	
+	arr = xmlDoc.getElementsByTagName("NAME_ENG");
+	for (var i = 0; i < arr.length; i++) {
+		txt += arr[i].childNodes[0].nodeValue + "<br>";
+	}
+	
+	document.getElementById("demo").innerHTML = txt;
+}
+
+</script>
+</body>
+</html>

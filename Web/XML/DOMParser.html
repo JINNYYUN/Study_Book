@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>DOMparser</title>
+</head>
+<body>
+
+<p id="demo"></p>
+
+<script type="text/javascript">
+let xmltext = "<bookstore>" + //root
+				"<book>" +	//node
+					"<title>탈무드</title>" +
+					"<author>man</author>" +
+					"<year>2001</year>" +
+				"</book>" +
+				"<book>" +	//node
+					"<title>이솝이야기</title>" +
+					"<author>woman</author>" +
+					"<year>2004</year>" +
+				"</book>" +
+			"</bookstore>";
+
+let parser = new DOMParser();//DOMParser 객체(소스 코드를 해석할 수 있는 기반)를 생성함.
+let xmlDoc = parser.parseFromString(xmltext, "text/html"); //parseFromString() 메소드를 이용해 문자열을 파싱함.
+
+document.getElementById('demo').innerHTML
+//	= xmlDoc.getElementsByTagName("book")[0].childNodes[0].nodeName; //title
+//	= xmlDoc.getElementsByTagName("book")[0].childNodes[1].nodeName; //author
+	
+	= xmlDoc.getElementsByTagName("book")[0].childNodes[0].childNodes[0].nodeValue; ;//탈무드
+//	= xmlDoc.getElementsByTagName("book").length; //2
+//	= xmlDoc.getElementsByTagName("book")[0].childNodes.length; // 3
+
+	
+</script>
+</body>
+</html>
