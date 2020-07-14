@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Json</title>
+</head>
+<body>
+<p id = "demo"></p>
+<p id = "array"></p>
+
+<script type="text/javascript">
+let jsonData = [
+					{
+						"name":"홍길동",
+						"age" : 24
+					},
+					{
+						"name":"일지매",
+						"age":21
+					},
+					{
+						"name":"성춘향",
+						"age":16
+					}
+	
+				]; 
+				
+document.getElementById("demo").innerHTML = jsonData[0].name;
+
+//하나만 전송해줄 경우
+let arrText = '{"name":"홍길동", "age":24, "addr":"서울시"}';	//Json이 아님 > String이다.
+
+//JSON.parse()메소드 : 인수로 전달받은 문자열을 자바스크립트 객체로 변환
+//문자열을 Json으로 변경 (통계를 낼때 json형태로 변경하고, 표현을 해준다)
+let jsonObj = JSON.parse(arrText); 		//object로 반환 됨
+alert(jsonObj);
+
+//JSON.stringify()메소드 : 자바스크립트 객체를 문자열로 변환
+let str = JSON.stringify(jsonObj); // UTF-16으로 인코딩된 JSON 형식의 문자열을 반환한다.
+alert(str);
+
+document.getElementById("array").innerHTML = jsonObj.name + " "+jsonObj.age;
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>접근 연습</title>
+</head>
+<body>
+
+<p id="demo"></p>
+<p id="demo1"></p>
+<p id="demo2"></p>
+<p id="demo3"></p>
+
+<script type="text/javascript">
+let param2 = {
+		  "quiz": {
+			    "sport": {
+				      "q1": {
+				        "question": "Which one is correct team name in NBA?",
+				        "options": [
+				          "New York Bulls",
+				          "Los Angeles Kings",
+				          "Golden State Warriros",
+				          "Huston Rocket"
+				        ],
+				        "answer": "Huston Rocket"
+				      }	//q1
+			   	 }, //sport
+			    "maths": {
+			      "q1": {
+			        "question": "5 + 7 = ?",
+			        "options": ["10", "11", "12", "13"],
+			        "answer": "12"
+			      },
+			      "q2": {
+			        "question": "12 - 8 = ?",
+			        "options": ["1", "2", "3", "4"],
+			        "answer": "4"
+			      }
+			    }//maths
+			  } //quiz
+			}
+
+function jsonTest(){
+	//Which one is correct team name in NBA?
+	document.getElementById("demo").innerHTML = param2.quiz.sport.q1.question;
+	//Golden State Warriros
+	document.getElementById("demo1").innerHTML = param2.quiz["sport"].q1.options[2];
+	//5 + 7 = ?
+	document.getElementById("demo2").innerHTML = param2.quiz.maths.q1.question;
+	//12
+	document.getElementById("demo3").innerHTML = param2.quiz["maths"].q1.options[2];
+}
+
+jsonTest();
+
+</script>
+</body>
+</html>
