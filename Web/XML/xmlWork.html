@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div id="books" align = "center">
+</div>
+
+<script type="text/javascript">
+
+let xhttp = new XMLHttpRequest();
+
+xhttp.onreadystatechange = function () {
+	if(this.readyState == 4 && this.status == 200){
+		xmlFunc(this);
+	}	
+}
+xhttp.open("GET", "books.xml", true);
+xhttp.send();
+
+function xmlFunc( xml ) {
+		
+	let xmlDoc = xml.responseXML;
+	
+	// root 취득
+	let rootTagName = xmlDoc.documentElement.nodeName;
+	console.log(rootTagName); //books
+
+	// node명을 취득	
+	let nodeArr = xmlDoc.documentElement.childNodes;
+	console.log(nodeArr); //NodeList(11) [text(3), book(1), text(3), book, text, book, text, book, text, book, text]
+	
+	// node list를 확인
+	let nodeName;	
+	for (i = 0; i < nodeArr.length; i++) {
+		console.log(nodeArr[i].nodeType);
+		if(nodeArr[i].nodeType == 1){
+			nodeName = nodeArr[i].nodeName;
+		//	alert(nodeName);
+		}			
+	}
+	
+	// table 준비
+	let out = "<table border='1'>";
+	out += "<col width='50'><col width='120'><col width='140'><col width='100'>";
+	out += "<tr>";
+	out += "<th>번호</th>";
+		
+	// column 명을 취득
+	columnName = xmlDoc.getElementsByTagName( nodeName )[0];
+	
+	let child = columnName.firstChild;
+//	alert(columnName.childNodes.length);
+	for (var i = 0; i < columnName.childNodes.length; i++) {
+		if(child.nodeType == 1){
+			out += "<th>" + child.nodeName + "</th>";
+		//	alert(child.nodeName);
+		}
+		child = child.nextSibling;
+	}		
+	out += "</tr>";
+	
+	// data 출력
+	let len = xmlDoc.getElementsByTagName(nodeName).length;
+//	alert(len);
+	for (i = 0; i < len; i++) {
+		out += "<tr>";
+		out += "<th>" + (i + 1) + "</th>";
+		
+		let dataArr = xmlDoc.getElementsByTagName(nodeName)[i];	// nodeName == book
+		
+		child = dataArr.firstChild;
+		for (j = 0; j < dataArr.childNodes.length; j++) {
+			//console.log(child.nodeType);
+			if(child.nodeType == 1){ //노트의 프로퍼티의 값이 element node일 경우
+				out += "<td>" + child.childNodes[0].nodeValue + "</td>";
+				//mlDoc.getElementsByTagName(nodeName)[i].firstChild.nodeValue
+			}
+			child = child.nextSibling; //다음 형제 노드
+			
+		}		
+		out += "</tr>";
+	}	
+	
+	out += "</table>";
+	
+	document.getElementById('books').innerHTML = out;
+}
+
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
