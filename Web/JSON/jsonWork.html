@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>jsonWork</title>
+</head>
+<body>
+
+<div id = "set" align = "center">
+</div>
+
+<script type="text/javascript">
+
+let xhttp = new XMLHttpRequest();
+
+//readyState 어트리뷰트가 변경될때마다 호출되는 EventHandler
+xhttp.onreadystatechange = function(){
+	if(xhttp.readyState == 4 && xhttp.status==200){
+		jsonFunc(this);
+	}
+}
+
+xhttp.open("GET", "booklist.json", true);
+xhttp.send();
+
+function jsonFunc(resp){
+	
+	let jsonDoc = resp.responseText;
+	let arr = JSON.parse(jsonDoc); //string->object(json)
+	
+	let out = "<table border='1'>";
+	out += "<col width='50'><col width='120'><col width='140'><col width='100'>";
+	
+	out += "<tr>";
+	out += "<th>번호</th>";
+	
+	for(k in arr[0]){	//key값 취득
+		out+= "<th>" +k +"</th>";
+	}
+	
+	out += "</tr>";
+	
+	
+	for (var i = 0; i < arr.length; i++) { //value만 취득
+		out+= "<tr>";
+		out+= "<th>" +(i+1) +"</th>";	//번호 생성
+		/*
+		out+= "<td>" + arr[i].title + "/<td>";
+		out+= "<td>" + arr[i].author + "/<td>";
+		out+= "<td>" + arr[i].price + "/<td>";
+		*/
+		
+		for(key in arr[i]){
+			out += "<td>" + arr[i][key] + "</td>";
+		}	
+		
+		out+="</tr>";
+	}
+	
+	out += "</table>";
+	
+	document.getElementById('set').innerHTML = out;
+}
+</script>
+</body>
+</html>
