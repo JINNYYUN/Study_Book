@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <!--글꼴-->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet" />
+  <!--css연결-->
+  <link rel="stylesheet" href="login.css" />
+  <!--script연결-->
+  <script src="main.js" defer></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+
+<body>
+  <article class="log-form">
+    <h2 class="page-heading">Login</h2>
+    <form>
+      <div class="form-group">
+        <label for="user[email]" class="form__label">Email</label>
+        <input type="text" id="user[email]" class="form_input" name="user[email]" placeholder="Email" />
+        <p id="user[email]-error" class="form-error hidden">형식에 맞는 이메일을 입력해주세요</p>
+      </div>
+      <div class="form-group">
+        <label for="user[password]" class="form__label">Password</label>
+        <input type="password" id="user[password]" class="form_input" name="user[password]" placeholder="Password" />
+        <p id="user[password]-error" class="form-error hidden">6자 이상의 비밀번호를 입력해주세요</p>
+      </div>
+      <div class="container-loginbtn">
+        <button type="button" class="loginbtn" id="loginbtn">Login</button>
+      </div>
+      <div class="sign-up">
+        <a href="#" class="bottom-txt border-bottom">비밀번호 찾기</a>&nbsp
+        <span class="bottom-txt">|</span>&nbsp
+        <a href="/sign_up" class="bottom-txt border-bottom">회원가입</a>
+      </div>
+    </form>
+  </article>
+  <!--end log form -->
+</body>
+
+</html>
