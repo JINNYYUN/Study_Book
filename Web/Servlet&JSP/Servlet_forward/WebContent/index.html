@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javaScript</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+</head>
+<body>
+	
+	<h1>앙케이트 조사입니다</h1>
+	<form action ="hello" id="frm" method="get">
+		<table>
+			<tr>
+				<td>이름</td>
+				<td>
+					<input type="text" name="name" size="20" value="">
+				</td>
+			</tr>
+			<tr>
+				<td>나이</td>
+				<td>
+					<input type="text" name="age" value="25">
+				</td>
+			</tr>
+			<tr>
+				<td>좋아하는 과일</td>
+				<td>
+					<select name="fruit" multiple="multiple">
+						<option value="apple">사과</option>
+						<option value="pear">배</option>
+						<option value="banana">바나나</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		
+		<button type="button" id = "btn">전송</button>
+	</form>
+	
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#btn").click(function(){
+				$("#frm").submit();
+			});
+		});
+		
+	</script>
+</body>
+</html>
