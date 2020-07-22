@@ -7,7 +7,7 @@ HTTP의 비연결성(Connectionless)과 비상태성(Stateless)을 보완하여 
 
 <br>
 
-## Cookie
+# Cookie
 
 - 클라이언트(브라우저)에서 관리되는 정보
 - 서버가 클라이언트에 저장하는 정보이다.
@@ -104,7 +104,84 @@ if(cookies !=null) {
 - ID저장, 로그인 상태 유지
 - 쇼핑몰 장바구니 기능
 
+<br>
 
+# Session
+
+- server공간 저장되고, 관리된다.
+- 서버에 접속해서 브라우저를 종료할 때까지 인증상태가 유지되, 접속 시간에 제한을 두어 일정 시간 응답이 없다면 세션을 끊도록 설정이 가능하다.
+- 쿠키보다 보안에 좋지만, 사용자가 많아질수록 서버 메모리를 많이 차지하게 된다.
+- 쿠키는 문자열만 값으로 사용이 가능했지만, 세션은 value로 다양한 객체를 담을 수 있다.
+- 한글 사용 금지
+
+<br>
+
+**session동작 방식**
+
+1. 서버에 접속하는 클라이언트에게 세션id를 부여한다. 
+2. 클라이언트는 세션 id를 쿠키 기술로 저장한다.
+3. 서버는 세션을 생성하여, 클라이언트의 세션 쿠키에 있는 session id객체의 주소값을 가져온다.
+4. 서버에서 세션에 데이터를 저장하거나, 값을 가져오는 등 다양한 처리 가능
+5. 클라이언트에서 쿠기가 소멸되거나. 서버에서 시간제한과 invalidate( )메서드를 사용하면 세션을 소멸할 수 있다.
+
+<br>
+
+**session생성**
+
+HttpServletRequest 객체의 **getSession()** 메소드로 세션을 생성한다. **getSession( )** 메소드는 클라이언트가 가지고 있는 세션 ID와 동일한 세션 객체를 찾아서 주솟값을 반환한다.
+
+```java
+//서버쪽에서 세션이 생성된다.
+//request객체 안에 내장되어 있다.
+HttpSession session = null;
+session = req.getSession();
+/* 	getSession(true) - 디폴트 값
+  	session Object가 존재하면, 현재 HttpSession을 반환한다.
+  	존재하지 않으면 새로운 HttpSession 객체를 생성하여 반환한다.
+
+		getSession(false);
+  	session Object가 존재하면, 현재 HttpSession을 반환한다.
+  	존재하지 않으면, null을 반환한다.*/
+
+//세션 시간 설정
+session.setMaxInactiveInterval(30); //365*24*60*60(1년), 보통 30분으로 설정한다.
+
+//세션에 데이터 저장
+session.setAttribute("visited", "1"); //key-value형태
+```
+
+<br>
+
+**session값 가져오기**
+
+getAttribute()메서드를 통해 값을 가져올 수 있다. 
+
+```java
+String visited = (String)session.getAttribute("visited"); //객체가 반환된다.
+```
+
+<br>
+
+**session 정보 제거**
+
+```java
+session.removeAttribute("name");
+//세션은 살아있고, 파라미터로 지정된 이름의 속성 값을 제거한다.
+//세션에 저장해둔 속성을 모두 사용해서 더이상 필요가 없을 때 사용한다.
+
+session.invalidate();
+//세션의 모든 속성을 제거한다. 세션이 초기화되는 것과 같은 효과를 가져온다.
+//delete개념보다는 release(무효화)에 더 가깝다
+```
+
+<br>
+
+**Session활용 예**
+
+- 로그인한 사용자의 정보를 안전하게 서버에 보관할 때
+
+
+<br>
 
 참고
 
